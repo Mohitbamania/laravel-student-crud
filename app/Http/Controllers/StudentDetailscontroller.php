@@ -82,7 +82,7 @@ class StudentDetailscontroller extends Controller
                 'mobile_number' => 'required|digits:10',
                 'email_id' => 'required|email',
                 'password' => 'required|string|min:6',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullble|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             if ($valiodator->fails()) {
                 return redirect()->back()->withErrors($valiodator)->withInput();
@@ -119,7 +119,7 @@ class StudentDetailscontroller extends Controller
 
             $student->update($data);
 
-            return redirect()->back()->with('success', 'Student Setails Updated Successfully');
+            return redirect()->back()->with('success', 'Student Details Updated Successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
         }
